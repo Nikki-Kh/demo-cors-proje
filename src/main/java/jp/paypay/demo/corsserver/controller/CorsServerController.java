@@ -17,7 +17,6 @@ public class CorsServerController {
     private static final Logger logger = LoggerFactory.getLogger(CorsServerController.class);
 
     @GetMapping("/cors-enabled")
-    @CrossOrigin
     public String returnOkStringFromCorsRequest() {
         return "ok";
     }
