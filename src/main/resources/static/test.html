@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button type="submit" onclick="UserAction()">Search</button>
+<script>
+    function UserAction() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                alert(this.responseText);
+            }
+        };
+        xhttp.open("GET", "http://f715442fe49f.ngrok.io/cors-enabled", true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send("Your JSON Data Here");
+    }
+</script>
+</body>
+</html>
