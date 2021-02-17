@@ -19,8 +19,9 @@ import java.util.Optional;
 
 @Component
 public class CorsFilter implements Filter {
+
     @Autowired
-    CorsRepository corsRepository;
+    private CorsRepository corsRepository;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException { }
