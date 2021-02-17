@@ -4,7 +4,7 @@ public class CorsDomainDto {
 
     private Long id;
 
-    private String domainName;
+    private String origin;
 
     public Long getId() {
         return id;
@@ -14,11 +14,19 @@ public class CorsDomainDto {
         this.id = id;
     }
 
-    public String getDomainName() {
-        return domainName;
+    public String getOrigin() {
+        return origin;
     }
 
-    public void setDomainName(String domainName) {
-        this.domainName = domainName;
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
+    @Override
+    public String toString() {
+        return "CorsDomainDto{" +
+                "id=" + id +
+                ", domainName='" + origin + '\'' +
+                '}';
     }
 }

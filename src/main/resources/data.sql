@@ -1,1 +1,1 @@
-INSERT INTO cors_domains(cors_domain) VALUES ('http://localhost:63343');
+INSERT INTO cors_origins(origin) VALUES ('http://localhost:63343');

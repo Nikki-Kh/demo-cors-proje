@@ -1,13 +1,12 @@
 package jp.paypay.demo.corsserver.filter;
 
-import jp.paypay.demo.corsserver.model.CorsDomainDto;
 import jp.paypay.demo.corsserver.service.CorsDomainService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.filter.OncePerRequestFilter;
+
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -15,6 +14,7 @@ import java.io.IOException;
 @Component
 public class CustomCorsFilter implements Filter {
 
+    @Autowired
     CorsDomainService corsDomainService;
 
     @Override
@@ -25,8 +25,8 @@ public class CustomCorsFilter implements Filter {
         if (origin != null &&
                 corsDomainService.getCorsDomainDtos()
                         .stream()
-                        .anyMatch(it -> it.getDomainName().equals(origin))) {
-            response.setHeader("Access-Control-Allow-Origin", "origin");
+                        .anyMatch(it -> it.getOrigin().equals(origin))) {
+            response.setHeader("Access-Control-Allow-Origin", origin);
             response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
             response.setHeader("Access-Control-Max-Age", "3600");
             response.setHeader("Access-Control-Allow-Headers", "authorization, content-type, xsrf-token");

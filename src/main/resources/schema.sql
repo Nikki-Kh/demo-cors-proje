@@ -1,6 +1,6 @@
-CREATE table cors_domains (
+CREATE table cors_origins (
     id INTEGER NOT NULL AUTO_INCREMENT,
-    cors_domain varchar(64) not null,
-    primary key (id),
-    UNIQUE (cors_domain)
+    origin VARCHAR(32) NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE (origin)
     );

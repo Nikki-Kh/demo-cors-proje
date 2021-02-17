@@ -21,12 +21,12 @@ public class CorsServerController {
         return "ok";
     }
 
-    @PostMapping("cors-disabled")
+    @PostMapping("/cors-disabled")
     public String getErrorFromCorsRequest() {
         return "ok";
     }
 
-    @PostMapping("add_cors_domain")
+    @PostMapping("/add_cors_domain")
     public void addCorsDomain(@RequestParam("domain") String domain) {
         service.insertNewDomain(domain);
     }

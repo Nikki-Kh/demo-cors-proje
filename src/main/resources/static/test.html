@@ -5,10 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-<button type="submit" onclick="UserAction('cors-enabled')">cors-enabled</button>
-<button type="submit" onclick="UserAction('cors-disabled')">cors-disabled</button>
+<button type="submit" onclick="UserAction('cors-enabled', 'GET')">cors-enabled</button>
+<button type="submit" onclick="UserAction('cors-disabled', 'POST')">cors-disabled</button>
 <script>
-    function UserAction(endpoint) {
+    function UserAction(endpoint, method) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -16,7 +16,7 @@
             }
         };
         // xhttp.open("GET", "http://0ae7142f17e6.ngrok.io/" + endpoint, true);
-        xhttp.open("GET", "http://localhost:8080/" + endpoint, true);
+        xhttp.open(method, "http://localhost:8080/" + endpoint, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send("Your JSON Data Here");
     }

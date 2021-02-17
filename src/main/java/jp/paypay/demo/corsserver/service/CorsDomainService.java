@@ -1,5 +1,6 @@
 package jp.paypay.demo.corsserver.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jp.paypay.demo.corsserver.model.CorsDomainDto;
 import jp.paypay.demo.corsserver.repository.CorsDomainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import java.util.Set;
 public class CorsDomainService {
 
     private Set<CorsDomainDto> cache;
+
+    static ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
     private final CorsDomainRepository repository;

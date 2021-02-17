@@ -5,6 +5,7 @@ import jp.paypay.demo.corsserver.model.CorsDomainDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Set;
 
 @Repository

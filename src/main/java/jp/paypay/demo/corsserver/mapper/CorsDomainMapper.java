@@ -10,10 +10,11 @@ import java.util.Set;
 @Mapper
 public interface CorsDomainMapper {
 
-    @Select("select * from cors_domains")
+    @Select("select * from cors_origins")
     public Set<CorsDomainDto> getAllCorsDomains();
 
-    @Insert("insert into cors_domains(cors_domain) values(#{domainStr})")
-    public void insertNewDomain(String domainStr);
+    @Insert("insert into cors_origins(origin) values(#{originStr})")
+    public void insertNewDomain(String originStr);
+
 
 }
