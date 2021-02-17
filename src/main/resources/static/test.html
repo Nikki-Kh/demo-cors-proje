@@ -5,16 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-<button type="submit" onclick="UserAction()">Search</button>
+<button type="submit" onclick="UserAction('cors-enabled')">cors-enabled</button>
+<button type="submit" onclick="UserAction('cors-disabled')">cors-disabled</button>
 <script>
-    function UserAction() {
+    function UserAction(endpoint) {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 alert(this.responseText);
             }
         };
-        xhttp.open("GET", "http://f715442fe49f.ngrok.io/cors-enabled", true);
+        // xhttp.open("GET", "http://0ae7142f17e6.ngrok.io/" + endpoint, true);
+        xhttp.open("GET", "http://localhost:8080/" + endpoint, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send("Your JSON Data Here");
     }
