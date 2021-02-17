@@ -14,7 +14,10 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 @Component
@@ -24,18 +27,20 @@ public class CorsFilter implements Filter {
     private CorsRepository corsRepository;
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException { }
+    public void init(FilterConfig filterConfig) throws ServletException {
+        System.out.println("init!!!!!!!!!!!!!!!!!!!");
+    }
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         String url = request.getRequestURI().toString();
+        System.out.println("---------------------start-----------------");
         System.out.println(url);
-
-        Optional<Cors> cors = corsRepository.findByUrl(url);
-        if(cors.isPresent() && cors.get().isAllowed()){
+        System.out.println("-------------------end-------------------");
+        List<Boolean> cors = corsRepository.findByUrl(url);
+        if(cors.get(0)){
             HttpServletResponse response = (HttpServletResponse) res;
-
             response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
             response.setHeader("Access-Control-Allow-Credentials", "true");
             response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
@@ -46,5 +51,6 @@ public class CorsFilter implements Filter {
     }
 
     @Override
-    public void destroy() { }
+    public void destroy() {
+    }
 }
